@@ -1,0 +1,314 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary-color: #008f0c;
+}
+
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url('../assets/font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins Bold';
+    src: url('../assets/font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins Thin';
+    src: url('../assets/font/Poppins-Thin.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins Semi Bold';
+    src: url('../assets/font/Poppins-SemiBold.ttf');
+}
+
+html, body {
+    font-family: 'Poppins', 'Sans Serif';
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+.typed-out {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(20, end) infinite;
+    animation-fill-mode: forwards;
+    }
+
+@keyframes typing {
+    0% { width:0 }
+    25% { width: 70% }
+    48% { width: 100% }
+    50% { width: 100% }
+    55% { width: 100% }
+    75% { width: 70%; }
+    85% { width: 30%; }
+    100% { width: 0; }
+}
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #121212; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    font-size: 18px; /* Increase font size */
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+
+#myBtn:hover {
+    background-color: #008f0c; /* Add a dark-grey background on hover */
+}
+
+#home, #about-card-home, #gallery {
+    min-height: 100%;
+}
+
+/* Navbar */
+#navbar {
+    position: -webkit-sticky;
+    transition: top 0.3s;
+    background-color: transparent;
+    font-family: 'Poppins Regular';
+}
+
+.navbar-brand {
+    font-family: 'Poppins Semi Bold';
+}
+
+#navbar ul li {
+    display: inline-block;
+}
+
+#navbar ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+#navbar ul li a,
+#navbar ul li a:after,
+#navbar ul li a:before {
+    transition: all .5s;
+}
+
+#navbar ul li a:hover {
+    color: #aaa;
+}
+
+/* #navbar a:hover {
+    background-color: black;
+    color: black;
+} */
+
+/* Home Pages | Jumbotron Content*/
+.cover-home {
+    background: url("../assets//x2/pascal-muller-iSz0IMtulos-unsplash@2x.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    object-fit: cover;
+    overflow: hidden;
+    z-index: -1;
+    filter: brightness(60%);
+}
+
+/* Home Pages | About Content*/
+#about-home {
+    padding: 60px auto;
+    margin-top: 300px;
+    margin-bottom: 80px;
+}
+
+#about-home .row {
+    position: relative;
+}
+
+.background-cover {
+    background: url('../assets/x1/juliana-castro-LdEZjO3wjqQ-unsplash.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    z-index: -1;
+    max-width: 100%;
+    width: 100%;
+    height: 87%;
+    filter: brightness(65%);
+}
+
+.rest-cover {
+    background: url('../assets//x1/pascal-muller-iSz0IMtulos-unsplash.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    position: absolute;
+    z-index: -1;
+    max-width: 100%;
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    top: 0px;
+    filter: brightness(50%);
+}
+
+.about-card {
+    transition: all 0.3s ease;
+}
+
+
+.about-card:hover {
+    transform: scale(1.1);
+}
+
+.card-body {
+    cursor: pointer;
+}
+
+#news-home {
+    margin-top: 80px;
+    padding-top: 1px;
+}
+
+.card-news-home {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card-news-home:hover{
+    background-color: #FFFFFF;
+    opacity: 70%;
+}
+
+.card-img-top {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden;
+    object-fit: cover;
+    width: 704px;
+    height: 224px;
+}
+
+/* About Page */
+#about {
+    margin-top: 200px;
+}
+
+
+/* Gallery Home */
+.list-gallery {
+    width: 350px;
+}
+
+.img-gallery {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    justify-content: center;
+    background-size: cover;
+}
+
+.galeri_container{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100% !important;
+}
+
+.image_contain_4 {
+    flex: 25%;
+    width: 100%;
+    height: 100%;
+}
+
+.image_contain_4 img {
+    max-width: 100%;
+    max-height: 100%;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* News Content */
+.img-news-right {
+    position: relative;
+    display: inline-flex;
+}
+
+.img-news {
+    width: 250px;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Contact Page Content */
+.maps-content {
+    border: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100rem;
+}
+
+#deskripsi {
+    width: 700px;
+    height: 49vh;
+    float:left;
+    border-radius: 0;
+}
+
+#subject, #nama, #email, #submit {
+    float: right;
+    width: 400px;
+    height: 70px;
+    border-radius: 0;
+}
+
+#nama, #email, #submit {
+    margin-top: 15px;
+}
+
+#submit {
+    background-color: #008f0c;
+    transition: all 0.5s;
+}
+
+#submit:hover {
+    background-color: #121212;
+}
+
+#icon-links span {
+    background-color: #008f0c;
+    padding: 25px;
+    width: 70px;
+    height: 70px;
+    display: block;
+    border-radius: 100%;
+    margin: 0px auto;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+}
+
+ /* Footer Content */
+#footer-links, li, a{
+    margin-bottom: 10px;
+    text-decoration: none;
+}
