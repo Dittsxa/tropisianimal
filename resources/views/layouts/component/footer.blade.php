@@ -1,4 +1,4 @@
-<footer class="site-footer bg-dark">
+<footer class="site-footer" style="background-color: #121212;">
     <div class="container d-flex text-light">
         <div class="row" style="margin-top: 60px; margin-bottom: 60px;">
             <div class="col-lg-5 mb-4">
@@ -11,20 +11,20 @@
             <div id="footer-links" class="col-lg-2" tyle="margin-left: 200px;">
                 <h5 class="footer-heading mb-4">Useful links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Blog</a></li>
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Hewan</a></li>
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Galeri</a></li>
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Testimonial</a></li>
+                    <li><a href="{{ url('/') }}" class="text-white" style="text-decoration: none;">Home</a></li>
+                    <li><a href="{{ url('/berita') }}" class="text-white" >Berita</a></li>
+                    <li><a href="{{ url('/galeri') }}" class="text-white" >Galeri</a></li>
+                    <li><a href="{{ url('/kontak') }}" class="text-white" >Kontak</a></li>
                 </ul>
             </div>
             
             <div id="footer-links" class="col-lg-2">
                 <h5 class="footer-heading mb-4">Privacy</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Karir</a></li>
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Tentang Kami</a></li>
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Kontak Kami</a></li>
-                    <li><a href="#" class="text-white" style="text-decoration: none;">Servis</a></li>
+                    <li><a href="#" class="text-white">Karir</a></li>
+                    <li><a href="{{ url('/tentang') }}" class="text-white">Tentang Kami</a></li>
+                    <li><a href="{{ url('/kontak') }}" class="text-white">Kontak Kami</a></li>
+                    <li><a href="#" class="text-white">Servis</a></li>
                 </ul>
             </div>
 
@@ -39,6 +39,6 @@
         </div>
     </div>
     <div class="copy text-light d-flex justify-content-center opacity-75" style="padding-bottom: 25px;">
-        <span>Copyright &copy;2020 All right reserved</span>
+        <span>Copyright &copy; <script>document.write(new Date().getFullYear())</script> All right reserved</span>
     </div>
 </footer>

@@ -1,13 +1,117 @@
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 425px){
     .cover-home {
-        background-attachment: scroll;
+        background-attachment: fixed;
         width: 100%;
         height: 70%;
     }
 
     .background-cover {
-        background-attachment: scroll;
-        height: 170vh;
+        background-attachment: fixed;
+        height: 213vh;
+    }
+
+    #img-about-home {
+        display: none;
+    }
+
+    #header-title {
+        margin-top: 80px;
+    }
+
+    #about-home {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
+    }
+
+    #gambar_about {
+        display: none;
+    }
+
+    #about {
+        margin-top: 8rem;
+    }
+
+    .about-card {
+        margin-bottom: 1rem;
+    }
+
+    #news-home {
+        margin-top: 4rem;
+    }
+
+    .col-6 {
+        width: 100%;
+    }
+
+    .col-4 {
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    #img-gallery {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+        display: flex;
+    }
+
+    #subject {
+        margin-top: 1rem;
+    }
+
+    #submit {
+        margin-bottom: 3rem;
+    }
+}
+
+/* medium and up screens */
+@media screen and (width: 768px), screen and (max-width: 1024) {
+    .cover-home {
+        background-attachment: fixed;
+        width: 100%;
+        height: 45%;
+    }
+
+    .background-cover {
+        background-attachment: fixed;
+        height: 82%;
+    }
+
+    #img-about-home {
+        display: contents;
+    }
+
+    #about-home {
+        margin-bottom: 3rem;
+    }
+
+    #img-about-home-1 {
+        width: 50%;
+    }
+
+    #img-about-home-2 {
+        width: 21rem;
+    }
+
+    .about-card {
+        margin-top: 2vh;
+    }
+
+    #header-title {
+        margin-top: 80px;
+    }
+
+    #about-home {
+        margin-top: 100px;
     }
 
     #gambar_about {
@@ -20,5 +124,68 @@
 
     #img-gallery {
         display: none;
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+        display: flex;
+    }
+
+    #img-news-header-1 {
+        width: 40vh;
+    }
+
+    #img-news-header-2, #img-news-header-3 {
+        width: 18rem; 
+        height: 35vh; 
+        object-fit: cover;
+    }
+    
+    #container-contact-link {
+        margin-top: -6rem;
+    }
+
+    #submit {
+        margin-bottom: 3rem;
+    }
+
+    #deskripsi {
+        width: 25.5rem;
+        height: 20rem;
+    }
+
+    #subject, #nama, #email, #submit {
+        width: 17rem;
+    }
+    /* .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(25%);
+    }
+    
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-25%);
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+        display: flex;
+    } */
+}
+
+@media only screen and (width: 1280px) {
+    .cover-home {
+        height: 80%;
+    }
+
+
+    .background-cover {
+        height: 70%;
+    }
+
+    #deskripsi {
+        height: 20.5rem;
     }
 }

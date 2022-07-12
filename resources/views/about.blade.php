@@ -10,15 +10,15 @@
         <div class="rest-cover img-fluid"></div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 align-self-center" style="margin-top: 150px">
+                <div class="col-lg-6 align-self-center" style="margin-top: 18vh">
                     <h1 class="fw-bold text-light" data-aos="fade-up">Tentang Kami</h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="about">
-        <div class="container mt-5">
+    <section id="about" data-aos="fade-up" data-aos-offset="100">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col-lg-6 ml-auto mt-5">
                     <h1 class="fw-bold">Tropisianimal</h1>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col mt-5 mb-5">
+                <div class="col mt-4 mb-5">
                     <h1 class="fw-bold">Misi</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur itaque repudiandae quas mollitia unde suscipit, voluptas cumque delectus, dolorem quasi similique labore quidem sequi? Assumenda minus sit reprehenderit modi nesciunt.</p>
                 </div>

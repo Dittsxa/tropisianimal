@@ -31,6 +31,19 @@ html, body {
     scroll-behavior: smooth;
 }
 
+.btn-success {
+    background-color: var(--primary-color);
+}
+
+.btn-success:hover {
+    background-color: #121212;
+}
+
+.bg-dark {
+    background-color: #121212;
+}
+
+
 .typed-out {
     overflow: hidden;
     white-space: nowrap;
@@ -67,7 +80,7 @@ html, body {
 }
 
 #myBtn:hover {
-    background-color: #008f0c; /* Add a dark-grey background on hover */
+    background-color: var(--primary-color); /* Add a dark-grey background on hover */
 }
 
 #home, #about-card-home, #gallery {
@@ -118,8 +131,6 @@ html, body {
     background-size: cover;
     background-attachment: fixed;
     position: absolute;
-    max-width: 100%;
-    max-height: 100%;
     width: 100%;
     height: 100%;
     top: 0px;
@@ -129,10 +140,14 @@ html, body {
     filter: brightness(60%);
 }
 
+#header-title {
+    margin-top: 150px;
+}
+
 /* Home Pages | About Content*/
 #about-home {
     padding: 60px auto;
-    margin-top: 300px;
+    margin-top: 250px;
     margin-bottom: 80px;
 }
 
@@ -150,21 +165,20 @@ html, body {
     z-index: -1;
     max-width: 100%;
     width: 100%;
-    height: 87%;
+    height: 95%;
     filter: brightness(65%);
 }
 
 .rest-cover {
-    background: url('../assets//x1/pascal-muller-iSz0IMtulos-unsplash.png');
+    background: fixed url('../assets//x1/pascal-muller-iSz0IMtulos-unsplash.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     background-size: cover;
-    background-attachment: scroll;
+    background-attachment: fixed;
     position: absolute;
     z-index: -1;
-    max-width: 100%;
+    min-width: 100%;
     height: 20rem;
-    width: 100%;
     object-fit: cover;
     overflow: hidden;
     top: 0px;
@@ -178,10 +192,7 @@ html, body {
 
 .about-card:hover {
     transform: scale(1.1);
-}
-
-.card-body {
-    cursor: pointer;
+    transform: translateY(-10%);
 }
 
 #news-home {
@@ -191,12 +202,36 @@ html, body {
 
 .card-news-home {
     transition: all 0.3s ease;
-    cursor: pointer;
+}
+
+.hover-image {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.read-more {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10rem;
 }
 
 .card-news-home:hover{
-    background-color: #FFFFFF;
-    opacity: 70%;
+    opacity: 0.7;
+    transform: scale(1.1);
+    transform: translateY(-10%);
+    margin-top: 2rem;
+}
+
+.card-news-home:hover .hover-image {
+    opacity: 1;
 }
 
 .card-img-top {
@@ -247,6 +282,21 @@ html, body {
     object-fit: cover;
 }
 
+.photo-gallery {
+    transition: all 0.3s ease;
+}
+
+.photo-gallery:hover {
+    background-color: #FFFFFF;
+    opacity: 70%;
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
 /* News Content */
 .img-news-right {
     position: relative;
@@ -259,6 +309,18 @@ html, body {
     object-fit: cover;
 }
 
+#img-news-header-1 {
+    width: 250px; 
+    object-fit: cover;
+}
+
+#img-news-header-2, #img-news-header-3 {
+    width: 15rem; 
+    height: 35vh; 
+    object-fit: cover;
+}
+
+
 /* Contact Page Content */
 .maps-content {
     border: 0;
@@ -268,16 +330,16 @@ html, body {
 }
 
 #deskripsi {
-    width: 700px;
-    height: 49vh;
+    width: 43.7rem;
+    height: 52vh;
     float:left;
     border-radius: 0;
 }
 
 #subject, #nama, #email, #submit {
     float: right;
-    width: 400px;
-    height: 70px;
+    width: 25rem;
+    height: 4.37rem;
     border-radius: 0;
 }
 
@@ -286,7 +348,7 @@ html, body {
 }
 
 #submit {
-    background-color: #008f0c;
+    background-color: var(--primary-color);
     transition: all 0.5s;
 }
 
@@ -295,7 +357,7 @@ html, body {
 }
 
 #icon-links span {
-    background-color: #008f0c;
+    background-color: var(--primary-color);
     padding: 25px;
     width: 70px;
     height: 70px;
@@ -305,6 +367,10 @@ html, body {
     object-fit: contain;
     display: flex;
     justify-content: center;
+}
+
+#container-contact-link {
+    margin-top: 25rem;
 }
 
  /* Footer Content */
