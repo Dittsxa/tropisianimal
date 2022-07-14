@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-md-6 flex-item justify-content-end" id="img-about-home" data-aos="zoom-in" data-aos-offset="200">
                     <img src="{!! asset('assets/x1/alessandro-desantis-9_9hzZVjV8s-unsplash.png') !!}" alt="" max-width="100%" height="auto" class="img-fluid mt-2" id="img-about-home-1">
-                    <img src="{!! asset('assets/x1/joshua-j-cotten-VCzNXhMoyBw-unsplash.png') !!}" float="left" max-width="100%" height="auto" class="img-fluid mt-2 ps-2" id="img-about-home-2">
+                    <img src="{!! asset('assets/x1/joshua-j-cotten-VCzNXhMoyBw-unsplash.png') !!}" float="left" max-width="100%" height="auto" class="img-fluid mt-2 ps-1" style="padding-left: -2rem;" id="img-about-home-2">
                     <img src="{!! asset('assets/x1/Group 77.png') !!}"  float="left" width="97%" height="auto" class="img-fluid mt-2">
                 </div>
             </div>
@@ -113,78 +113,20 @@
         <div class="container mb-5 mt-5 d-flex">
             <div class="row">
                 <div class="card-group text-center border-0">
-                    <div class="col-lg-4 col-6 align-self-center">
+                    @foreach ($post as $row)
+                    <div class="col-lg-4 col-6">
                         <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset('assets/x2/rick-l-037fCBgZB10-unsplash@2x.png') }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mt-2">Apa Kabar Kebun Binatang <br> Saat Wabah Covid-19?</h5>
-                                <p class="card-text text-center text-secondary">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit sed do.</p>
+                            <img src="{{ asset("assets/x2/" . $row->image) }}" class="card-img-top rounded-0" alt="...">
+                            <div class="card-body" style="background-color: #e6e6e6">
+                                <h5 class="card-title fw-bold mt-2">{{ $row->judul }}</h5>
+                                <p class="card-text text-center text-secondary align-content-center">{!! $row->excerpt !!}</p>
                                 <div class="hover-image">
-                                    <a class="btn read-more rounded-0" href="#">Baca Selengkapnya</a>
+                                    <a class="btn read-more rounded-0" href="{{ route('showBerita', $row->slug) }}">Baca Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-6 align-self-center">
-                        <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset('assets/x2/hans-veth-o33FMDaXJS8-unsplash@2x.png') }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mt-2">Anugerah dari Hutan <br> Indonesia </h5>
-                                <p class="card-text text-center text-secondary">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit sed do.</p>
-                                <div class="hover-image">
-                                    <a class="btn read-more rounded-0" href="#">Baca Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4  col-6 align-self-center">
-                        <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset('assets/x2/ronald-gijezen-7h06P9UKhYY-unsplash@2x.png') }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mt-2"> 10 Hewan Herbivora <br> yang Berbahaya</h5>
-                                <p class="card-text text-center text-secondary">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit sed do.</p>
-                                <div class="hover-image">
-                                    <a class="btn read-more rounded-0" href="#">Baca Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4  col-6 align-self-center">
-                        <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset('assets/x2/smit-patel-dGMcpbzcq1I-unsplash@2x.png') }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mt-2"> 4 Penyakit yang Ditularkan <br> Hewan ke Manusia</h5>
-                                <p class="card-text text-center text-secondary">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit sed do.</p>
-                                <div class="hover-image">
-                                    <a class="btn read-more rounded-0" href="#">Baca Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4  col-6 align-self-center">
-                        <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset('assets/x2/TERUMBU-KARANG (1)@2x.png') }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mt-2"> Terumbu Karang: Pengertian, <br> Jenis, Sebaran, dan Masalah</h5>
-                                <p class="card-text text-center text-secondary">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit sed do.</p>
-                                <div class="hover-image">
-                                    <a class="btn read-more rounded-0" href="#">Baca Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4  col-6 align-self-center">
-                        <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset('assets/x2/vladimir-kudinov-vmlJcey6HEU-unsplash@2x.png') }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mt-2"> Ternyata, Tanduk Rusa Berasal  <br> dari Sel Kanker Tulang</h5>
-                                <p class="card-text text-center text-secondary">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit sed do.</p>
-                                <div class="hover-image">
-                                    <a class="btn read-more rounded-0" href="#">Baca Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -242,7 +184,7 @@
         </div>
     </div> --}}
         <div data-aos="fade-up" data-aos-offset="100">
-                <div id="recipeCarousel" class="carousel slide carousel-multi-item" data-bs-ride="carousel">
+                <div id="recipeCarousel" class="carousel slide carousel-multi-item" data-bs-ride="carousel" data-bs-slide-to="1">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <div class="col-md-3">

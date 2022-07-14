@@ -29,7 +29,7 @@
                     <h1 class="fw-bold">10 Hewan Herbivora <br> Yang Berbahaya</h1>
                     <p class="fw-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex voluptates perspiciatis ad nostrum quidem iusto labore nam. Vitae quibusdam impedit sequi quisquam alias atque nostrum obcaecati eaque assumenda ipsa!</p>
                     <p class="fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam et labore, id nulla distinctio vero molestias voluptatum illo ab deserunt aliquid tempore voluptatem molestiae soluta placeat alias inventore dicta!</p>
-                    <a href="{{ url('/tentang') }}" style="padding: 15px;" class="btn btn-success rounded-0"> 
+                    <a href="{{ url('/berita') }}" style="padding: 15px;" class="btn btn-success rounded-0"> 
                         Baca Selengkapnya
                         <img src="{{ asset('assets/arrow-right (1).svg') }}" alt="" class="mx-2">
                     </a>
@@ -47,7 +47,25 @@
         <div class="container mb-5 mt-5 d-flex" data-aos="fade-up">
             <div class="row">
                 <div class="card-group text-center border-0">
-                    <div class="col-lg-4 col-6 align-self-center">
+                    @foreach ($post as $row)
+                    <div class="col-lg-4 col-6">
+                        <div class="card mx-2 mb-3 border-0 card-news-home">
+                            <img src="{{ asset("assets/x2/" . $row->image) }}" class="card-img-top rounded-0" alt="...">
+                            <div class="card-body" style="background-color: #e6e6e6">
+                                <h5 class="card-title fw-bold mt-2">{{ $row->judul }}</h5>
+                                <p class="card-text text-center text-secondary align-content-center">{!! $row->excerpt !!}</p>
+                                <div class="hover-image">
+                                    <a class="btn read-more rounded-0" href="{{ route('showBerita', $row->slug) }}">Baca Selengkapnya</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                    <div class="container justify-content-center">
+                        {{ $post->links() }}
+                    </div>
+                    {{-- <div class="col-lg-4 col-6 align-self-center">
                         <div class="card mx-2 mb-3 border-0 card-news-home">
                             <img src="{{ asset('assets/x2/rick-l-037fCBgZB10-unsplash@2x.png') }}" class="card-img-top rounded-0" alt="...">
                             <div class="card-body">
@@ -118,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

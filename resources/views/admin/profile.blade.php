@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Berita | Tropisianimal')
+@section('title', 'Contact | Tropisianimal')
 
 @section('content_header')
     <div class="container-fluid">
@@ -10,16 +10,21 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Profil</li>
+                    <li class="breadcrumb-item active">Contact</li>
                 </ol>
             </div>
         </div>
     </div>
 
+@endsection
+    
+@section('content')   
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     @endif
 
@@ -31,47 +36,37 @@
             </button>
         </div>
     @endif
-@endsection
-
-@section('content')
-    <div class="container-fluid d-flex float-right">
-        <a name="tambah" id="tambah" class="btn btn-primary float-sm-right mb-3" href="" role="button" data-bs-target="#tambah_buku" data-bs-toggle="modal">&#43;  Tambah Berita</a>
-        <form action="#" method="GET" id="cari">
-            @csrf
-            <div class="input-group mb-3 float-sm-right px-3">
-                <input type="search" name="search" value="" class="form-control" placeholder="Search by Judul">
-                <button class="btn btn-primary" type="submit">&#128269;</button>
-            </div>
-        </form>
-    </div>    
 
     <div class="container-fluid">
-        <table class="table table-striped table-bordered e">
+        <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr align="center">
                     <th>No</th>
-                    <th>Judul</th>
-                    <th>Tanggal Upload</th>
+                    <th>Email</th>
+                    <th>Telp</th>
+                    <th>Location</th>
                     <th colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($contact as $no => $row )
                 <tr>
-                    <td align="center" width="50px">1</td>
-                    <td width="400px">Lorem ipsum .</td>
-                    <td width="150px" align="center">20/07/2022</td>
+                    <td align="center" width="50px">{{ ++$no }}</td>
+                    <td width="300px">{{ $row->email }}</td>
+                    <td width="100px" align="center">{{ $row->telp }}</td>
+                    <td width="150px" align="center">{!! $row->location !!}</td>
                     <td width="100px" align="center">
-                        <a name='edit' id='edit' class='btn btn-info' href="#" role='button' data-bs-toggle="modal" data-bs-target="#edit_buku">
+                        <a name='edit' id='edit' class='btn btn-info' href="#" role='button' data-toggle="modal" data-target="#detail_contact{{ $row->id }}">
                             <i class="fas fa-edit"></i>
-                        </a>
-                        <a role="button" href="#" type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return confirm('Apakah Anda Yakin?')">
-                            <i class="fas fa-trash"></i>
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
+
+    @include('admin.pages.edit-contact')
 @endsection
 
 @section('footer')

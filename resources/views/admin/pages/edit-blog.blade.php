@@ -19,7 +19,7 @@
 @endsection
 
 @section('content') 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom: 15vh">
         @foreach ($posts as $row)
         <form action="{{ route('editBerita', $row->id) }}" method="POST" class="form-item">
             @csrf
@@ -29,14 +29,14 @@
                 <input type="text" name="judul" class="form-control" id="cb" placeholder="Masukkan Judul Buku" value="{{ $row->judul }}">
             </div>
             <div class="form-group">
+                <label for="image" class="form-label">Gambar/Thumbnail</label>
+                <input id="formFile" class="form-control" type="file" name="image">
+            </div>
+            <div class="form-group">
                 <label for="body">Isi Berita</label>
                 <textarea id="editor" class="form-control" type="text" name="body">
                     {!! $row->body !!}
                 </textarea>
-            </div>
-            <div class="form-group">
-                <label for="image" class="form-label">Gambar/Thumbnail</label>
-                <input id="formFile" class="form-control" type="file" name="image">
             </div>
             <div class="float-sm-right mt-4">
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>

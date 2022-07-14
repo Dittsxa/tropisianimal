@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +20,9 @@ use Illuminate\Support\Facades\Auth;
 
 
 // Front-end Tropisianimal
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [UserController::class, 'index'])->name('index');
+Route::get('/berita', [UserController::class, 'viewBerita'])->name('viewBerita');
+Route::get('/berita/{slug}', [UserController::class, 'showBerita'])->name('showBerita');
 
 Route::get('/tentang', function () {
     return view('about');
@@ -28,10 +30,6 @@ Route::get('/tentang', function () {
 
 Route::get('/galeri', function () {
     return view('gallery');
-});
-
-Route::get('/berita', function () {
-    return view('news');
 });
 
 
@@ -56,8 +54,17 @@ Route::get('/admin/berita/search', [AdminController::class, 'search'])->name('ca
 
 
 // Fitur Admin Bagian Mailbox
-Route::get('/kontak', [MailController::class, 'index'])->name('kontak'); // Melakukan Eksekusi View
-Route::post('kontak/kirim', [MailController::class, 'store'])->name('mailbox.tambah');
-Route::get('/admin/mail', [AdminController::class, 'viewMail'])->name('mailbox');
-Route::post('/admin/mail/delete/{id}', [MailController::class, 'destroy'])->name('mailbox.delete');
-Route::get('admin/mail/search', [MailController::class, 'search'])->name('mailbox.search');
+Route::get('/kontak', [MailController::class, 'index'])->name('kontak'); // Menampilkan View Kontak
+Route::post('kontak/kirim', [MailController::class, 'store'])->name('mailbox.tambah'); // Melakukan Eksekusi untuk Mengirim Email
+Route::get('/admin/mail', [AdminController::class, 'viewMail'])->name('mailbox'); // Menampilkan Tampilan untuk Mailbox
+Route::post('/admin/mail/delete/{id}', [MailController::class, 'destroy'])->name('mailbox.delete'); // Melakukan Eksekusi untuk menghapus data mailbox
+Route::get('admin/mail/search', [MailController::class, 'search'])->name('mailbox.search'); // Melakukan eksekusi untuk mencari data email di mailbox
+
+// Fitur Admin Bagian Galeri
+Route::get('/admin/galeri', [AdminController::class, 'viewGaleri'])->name('galeri');
+
+
+// Fitur Admin Bagian contact
+Route::get('/admin/contact', [AdminController::class, 'viewContact'])->name('contact');
+Route::post('/admin/contact/{id}', [AdminController::class, 'storeContact'])->name('editContact');
+

@@ -19,21 +19,30 @@
 @endsection
 
 @section('content') 
-    <div class="container-fluid" style="margin-bottom: 15vh">
+    @error('judul')
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Oops! Ada Kesalahan!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>   
+    @enderror
+    
+    <div class="container-fluid" style="margin-bottom: 20vh">
         <form action="{{ route('tambahBeritaBaru') }}" method="post" class="form-item mb-5" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="judul">Judul Berita</label>
-                <input type="text" name="judul" class="form-control" id="cb" placeholder="Masukkan Judul Buku" value="">
-            </div>
-            <div class="form-group">
-                <label for="body">Isi Berita</label>
-                <textarea id="editor" class="form-control" type="text" name="body"></textarea>
+                <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" id="cb" placeholder="Masukkan Judul Berita" value="">
             </div>
             <div class="form-group">
                 <label for="image" class="form-label">Gambar/Thumbnail</label>
                 <img class="img-preview img-fluid col-sm-2" alt="">
-                <input id="formFile" class="form-control" type="file" name="image" id="image" onchange="previewImage()">
+                <input id="formFile" class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" onchange="previewImage()">
+            </div>
+            <div class="form-group">
+                <label for="body">Isi Berita</label>
+                <textarea id="editor" class="form-control @error('body') is-invalid @enderror" type="text" name="body"></textarea>
             </div>
             <div class="float-sm-right mt-4">
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>

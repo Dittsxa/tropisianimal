@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Mailbox;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Contact;
 
 class MailController extends Controller
 {
     public function index(Request $request)
     {
         # code...
-        return view('contact');
+        $pagination = 5;
+        $contact = Contact::all();
+        $contact = Contact::orderBy('created_at', 'desc')->paginate(5);
+        return view('contact', ['contact' => $contact])->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
 
     public function store(Request $request)

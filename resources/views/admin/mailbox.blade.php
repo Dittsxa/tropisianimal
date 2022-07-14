@@ -61,9 +61,9 @@
                 </tr>
             </thead>
             <tbody> 
-                @forelse ($mail as $no => $row )
+                @forelse ($mail as $i => $row )
                 <tr>
-                    <td width="50px" align="center">{{ ++$no }}</td>
+                    <td width="50px" align="center">{{ ++$i }}</td>
                     <td width="400px">{{ $row->name }}</td>
                     <td width="300px" align="center">{{ $row->email }}</td>
                     <td width="350px">{{ $row->subject }}</td>
@@ -71,7 +71,7 @@
                         <a name='detail' id='detail' class='btn btn-info mb-1' data-toggle="modal" data-target="#detail_mail{{ $row->id }}">
                             <i class="fas fa-info-circle"></i>
                         </a>
-                        <form action="#" method="post" class="d-inline-flex">
+                        <form action="{{ route('mailbox.delete', $row->id) }}" method="post" class="d-inline-flex">
                             @csrf
                             @method('POST')
                             <button  type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return confirm('Apakah Anda Yakin?')">

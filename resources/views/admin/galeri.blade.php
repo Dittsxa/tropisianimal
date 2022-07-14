@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Berita | Tropisianimal')
+@section('title', 'Galeri | Tropisianimal')
 
 @section('content_header')
     <div class="container-fluid">
@@ -34,17 +34,20 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <a name="tambah" id="tambah" class="btn btn-primary float-sm-right mb-3" href="" role="button" data-bs-target="#tambah_buku" data-bs-toggle="modal">&#43;  Tambah Berita</a>
-            <!-- Search Box -->
-        <form action="{{ url('search') }}" method="GET" id="cari">
+    <div class="container-fluid d-flex justify-content-end">
+        <a name="tambah" id="tambah" class="btn btn-primary float-sm-right mb-3 mx-3" href="#" role="button">
+            <i class="fas fa-plus"></i> Tambah Galeri
+        </a>
+        <form action="" method="GET" id="cari">
             @csrf
             <div class="input-group mb-3">
-                <input type="search" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search by Judul">
-                <button class="btn btn-primary" type="submit">&#128269;</button>
+                <input type="search" name="search" value="{{ old('search') }}" class="form-control" placeholder="Search">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </form>
-    </div>    
+    </div>  
 
     <div class="container-fluid">
         <table class="table table-striped table-bordered e">

@@ -65,17 +65,18 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($posts as $no => $row )
+                @forelse ($posts as $row )
                     <tr>
-                        <td align="center" width="50px">{{ ++$no }}</td>
-                        <td width="600px">
-                            <a data-toggle="modal" data-target="#detail_berita{{ $row->id }}">{{ $row->judul }}</a>
-                        </td>
+                        <td align="center" width="50px">{{ ++$i }}</td>
+                        <td width="600px">{{ $row->judul }}</td>
                         <td width="350px" align="center">{!! Str::limit($row->body, $limit = 50) !!}</td>
                         <td width="250px" align="center"> {{ $row->created_at }}</td>
-                        <td width="150px" align="center">
-                            <a name='edit' id='edit' class='btn btn-info mb-1' href="{{ route('viewEditBerita', $row->id) }}" role='button'>
+                        <td width="250px" align="center">
+                            <a name='edit' id='edit' class='btn btn-primary mb-1' href="{{ route('viewEditBerita', $row->id) }}" role='button'>
                                 <i class="fas fa-edit"></i>
+                            </a>
+                            <a name='edit' id='edit' class='btn btn-info mb-1' role='button' data-toggle="modal" data-target="#detail_berita{{ $row->id }}"">
+                                <i class="fas fa-info-circle"></i>
                             </a>
                             <form action="{{ route('deleteBerita', $row->id) }}" method="post" class="d-inline-flex">
                                 @csrf
