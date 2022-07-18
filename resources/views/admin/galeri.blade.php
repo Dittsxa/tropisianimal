@@ -61,12 +61,16 @@
                     </td>
                     <td width="150px" align="center">{{ $row->created_at }}</td>
                     <td width="100px" align="center">
-                        <a name='edit' id='edit' class='btn btn-info' href="#" role='button' data-toggle="modal" data-target="#edit_buku">
+                        <a name='edit' id='edit' class='btn btn-info' role='button' data-toggle="modal" data-target="#edit_galeri">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a role="button" href="#" type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return confirm('Apakah Anda Yakin?')">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                        <form action="{{ route('galeri.hapus', $row->id) }}" method="post" class="d-inline-flex">
+                            @csrf
+                            @method('POST')
+                            <button  type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return confirm('Apakah Anda Yakin?')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -76,6 +80,7 @@
     </div>
 
     @include('admin.pages.add-galeri')
+    @include('admin.pages.edit-galeri')
 @endsection
 
 @section('footer')

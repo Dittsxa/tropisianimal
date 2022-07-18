@@ -180,6 +180,34 @@ class AdminController extends Controller
         return redirect()->route('galeri')->with('success', 'Berita telah berhasil ditambahkan');
     }
 
+    public function updateGaleri(Request $request, $id)
+    {
+        $rules = [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+        ];
+        
+        $validatedData = $request->validate($rules);
+        if($request->hasFile('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+
+
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+
+        $galeri = Galeri::find($id)->update($validatedData);
+        return redirect()->route('galeri')->with('success', 'Berita telah berhasil diperbaharui');
+    }
+
+    public function destroyGaleri($id)
+    {
+        $galeri = Galeri::findOrFail($id);
+        $galeri->delete();
+        return back()->with('success', 'Penghapusan data telah berhasil');
+    }
+
     public function viewContact()
     {
         $no = Contact::paginate(5);

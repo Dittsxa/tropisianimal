@@ -56,13 +56,16 @@
     <div class="container d-flex">
         <div class="row mt-3 mb-5">
             @foreach ($galeri as $row)
-                <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                    <img src="{{ asset('storage/' . $row->image) }}" height="200px" class="img-fluid">
+                <div class="col-6 col-lg-3 col-sm-1 mt-4 flex-column photo-gallery">
+                    <img src="{{ asset('storage/' . $row->image) }}" height="200px" class="img-fluid" style="object-fit: cover">
                 </div>    
             @endforeach
             
-            {!! $galeri->links() !!}
         </div>
+    </div>
+
+    <div class="container">
+        {!! $galeri->links() !!}
     </div>
 
     @include('layouts.component.footer')

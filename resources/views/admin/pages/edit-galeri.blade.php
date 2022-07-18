@@ -1,15 +1,15 @@
 @foreach ($galeri as $row )
-<div class="modal fade" id="tambah_galeri" tabindex="-1" aria-labelledby="tambah_galeri" aria-hidden="true">
+<div class="modal fade" id="edit_galeri" tabindex="-1" aria-labelledby="edit_galeri" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Add Galeri| Tropisianimal</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Edit Galeri| Tropisianimal</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('galeri.tambah') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('galeri.edit', $row->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="image">Gambar/Thumbnail</label>
