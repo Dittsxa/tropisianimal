@@ -28,9 +28,7 @@ Route::get('/tentang', function () {
     return view('about');
 });
 
-Route::get('/galeri', function () {
-    return view('gallery');
-});
+Route::get('/galeri', [UserController::class, 'viewGallery'])->name('viewGaleri');
 
 
 // Back-end Tropisianimal
@@ -62,6 +60,7 @@ Route::get('admin/mail/search', [MailController::class, 'search'])->name('mailbo
 
 // Fitur Admin Bagian Galeri
 Route::get('/admin/galeri', [AdminController::class, 'viewGaleri'])->name('galeri');
+Route::post('/admin/galeri/tambah', [AdminController::class, 'storeGaleri'])->name('galeri.tambah');
 
 
 // Fitur Admin Bagian contact

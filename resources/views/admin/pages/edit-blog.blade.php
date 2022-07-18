@@ -19,18 +19,37 @@
 @endsection
 
 @section('content') 
+
+    @if (session('error'))
+    <div class="alert alert-error alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
     <div class="container-fluid" style="margin-bottom: 15vh">
         @foreach ($posts as $row)
-        <form action="{{ route('editBerita', $row->id) }}" method="POST" class="form-item">
+        <form action="{{ route('editBerita', $row->id) }}" method="POST" class="form-item" enctype="multipart/form-data">
             @csrf
-            @method('post')
             <div class="form-group">
                 <label for="judul">Judul Berita</label>
                 <input type="text" name="judul" class="form-control" id="cb" placeholder="Masukkan Judul Buku" value="{{ $row->judul }}">
+                @error('judul')
+                    <div class="invalid-feedback">
+                        Judul is required
+                    </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="image" class="form-label">Gambar/Thumbnail</label>
                 <input id="formFile" class="form-control" type="file" name="image">
+                @error('image')
+                    <div class="invalid-feedback">
+                        Image must to fill
+                    </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="body">Isi Berita</label>

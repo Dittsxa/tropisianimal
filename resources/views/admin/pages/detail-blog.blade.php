@@ -30,7 +30,7 @@
                 <div name="card" class="text-justify border" style="background-color: #e9ecef;">
                     <div class="card-body">
                         <div class="card-text">
-                            {!! $row->image  !!}
+                            <img src="{{ asset("storage/" . $row->image) }}" class="img-fluid">
                         </div>
                     </div>
                 </div>

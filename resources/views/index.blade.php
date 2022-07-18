@@ -116,7 +116,7 @@
                     @foreach ($post as $row)
                     <div class="col-lg-4 col-6">
                         <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset("assets/x2/" . $row->image) }}" class="card-img-top rounded-0" alt="...">
+                            <img src="{{ asset("storage/" . $row->image) }}" class="card-img-top rounded-0" alt="...">
                             <div class="card-body" style="background-color: #e6e6e6">
                                 <h5 class="card-title fw-bold mt-2">{{ $row->judul }}</h5>
                                 <p class="card-text text-center text-secondary align-content-center">{!! $row->excerpt !!}</p>

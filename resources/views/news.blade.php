@@ -29,7 +29,7 @@
                     <h1 class="fw-bold">10 Hewan Herbivora <br> Yang Berbahaya</h1>
                     <p class="fw-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex voluptates perspiciatis ad nostrum quidem iusto labore nam. Vitae quibusdam impedit sequi quisquam alias atque nostrum obcaecati eaque assumenda ipsa!</p>
                     <p class="fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam et labore, id nulla distinctio vero molestias voluptatum illo ab deserunt aliquid tempore voluptatem molestiae soluta placeat alias inventore dicta!</p>
-                    <a href="{{ url('/berita') }}" style="padding: 15px;" class="btn btn-success rounded-0"> 
+                    <a href="{{ route('showBerita', $post[0]->slug) }}" style="padding: 15px;" class="btn btn-success rounded-0"> 
                         Baca Selengkapnya
                         <img src="{{ asset('assets/arrow-right (1).svg') }}" alt="" class="mx-2">
                     </a>
@@ -44,13 +44,13 @@
                 </div>
             </div>
         </div>
-        <div class="container mb-5 mt-5 d-flex" data-aos="fade-up">
+        <div class="container mt-5 d-flex" data-aos="fade-up">
             <div class="row">
                 <div class="card-group text-center border-0">
                     @foreach ($post as $row)
                     <div class="col-lg-4 col-6">
                         <div class="card mx-2 mb-3 border-0 card-news-home">
-                            <img src="{{ asset("assets/x2/" . $row->image) }}" class="card-img-top rounded-0" alt="...">
+                            <img src="{{ asset("storage/" . $row->image) }}" class="card-img-top rounded-0" alt="...">
                             <div class="card-body" style="background-color: #e6e6e6">
                                 <h5 class="card-title fw-bold mt-2">{{ $row->judul }}</h5>
                                 <p class="card-text text-center text-secondary align-content-center">{!! $row->excerpt !!}</p>

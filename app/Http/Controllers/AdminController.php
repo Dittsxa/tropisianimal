@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Galeri;
 use App\Models\Mailbox;
 use Illuminate\Http\Request;
 use App\Models\Post;
-use Symfony\Component\HttpKernel\Event\ViewEvent;
 use \Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -62,7 +63,7 @@ class AdminController extends Controller
         $request->validate([
             'judul' => 'required',
             'body' => 'required',
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
 
         $input = $request->all();
@@ -70,22 +71,55 @@ class AdminController extends Controller
             'judul' => $input['judul'],
             'slug' => Str::slug($input['judul'], $separator = '-', $language = 'id'),
             'body' => $input['body'],
-            'excerpt' => Str::limit($input['body'], $limit = 50),
+            'excerpt' => Str::limit(strip_tags($input['body']), $limit = 50),
+            'image' => $input['image']->store('post-images')
         ]);
+
+        if( $request->file('image')){
+            $request->file('image')->store('post-images');
+        }
+
 
         // $imageName = time().'.'.$request->image->extension();  
         // $request->image->move(public_path('post-images'), $imageName);
         return redirect()->route('dataBerita')->with('success', 'Berita telah berhasil ditambahkan');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Post $posts)
     {
-        $request->validate([
+        // $request->validate([
+        //     'judul' => 'required',
+        //     'body' => 'required',
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+        // ]);
+        $rules = [
             'judul' => 'required',
             'body' => 'required',
-        ]);
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+        ];
+        
+        $validatedData = $request->validate($rules);
+        if($request->hasFile('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
 
-        $posts = Post::find($id)->update($request->all());
+
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+
+        // $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        
+        // if($request->file('image')){
+        //     if ($request->oldImage) {
+        //         Storage::delete($request->oldImage);
+        //     }
+        //     $request->file('image')->store('post-images');
+        // }
+        
+        $posts = Post::find($id)->update($validatedData);
+        //Post::where('id', $posts->id)->update($request->all());
+        
         return redirect()->route('dataBerita')->with('success', 'Berita telah berhasil diperbaharui');
 
     }
@@ -100,14 +134,15 @@ class AdminController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
+        $pagination = 5;
 
-        $posts = DB::table('posts')->where('judul','like',"%".$search."%")->paginate(5);
+        $posts = DB::table('posts')->where('judul','like',"%".$search."%" )->orderBy('created_at', 'desc')->paginate(5);
         // $posts = Post::latest();
         // if($request['search']) {
         //     $posts->where('judul','like', '&' . $request['search'] . '%');
         // }
 
-        return view('admin.blog', ['posts' => $posts]);
+        return view('admin.blog', ['posts' => $posts])->with('i', ($request->input('page', 1) - 1) * $pagination);
     }
 
     public function viewMail()
@@ -118,9 +153,31 @@ class AdminController extends Controller
         return view('admin.mailbox', ['mail' => $mail]);
     }
 
-    public function viewGaleri()
+    public function viewGaleri(Request $request)
+    {   
+        $no = Galeri::paginate(5);
+        $pagination = 5;
+        $galeri = Galeri::all();
+        $galeri = Galeri::paginate(5);
+        return view('admin.galeri', ['galeri' => $galeri])->with('i', ($request->input('page', 1) - 1) * $pagination);;
+    }
+
+    public function storeGaleri(Request $request)
     {
-        return view('admin.galeri');
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
+        ]);
+
+        $input = $request->all();
+        $posts = Galeri::create([
+            'image' => $input['image']->store('post-images')
+        ]);
+
+        if( $request->file('image')){
+            $request->file('image')->store('post-images');
+        }
+
+        return redirect()->route('galeri')->with('success', 'Berita telah berhasil ditambahkan');
     }
 
     public function viewContact()

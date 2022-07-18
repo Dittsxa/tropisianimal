@@ -15,11 +15,21 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('content')
+    <div class="container-fluid d-flex justify-content-end">
+        <a name="tambah" id="tambah" class="btn btn-primary float-sm-right mb-3" role="button" data-toggle="modal" data-target="#tambah_galeri">
+            <i class="fas fa-plus"></i> Tambah Galeri
+        </a>
+    </div>  
 
     @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
             {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     @endif
 
@@ -31,41 +41,27 @@
             </button>
         </div>
     @endif
-@endsection
-
-@section('content')
-    <div class="container-fluid d-flex justify-content-end">
-        <a name="tambah" id="tambah" class="btn btn-primary float-sm-right mb-3 mx-3" href="#" role="button">
-            <i class="fas fa-plus"></i> Tambah Galeri
-        </a>
-        <form action="" method="GET" id="cari">
-            @csrf
-            <div class="input-group mb-3">
-                <input type="search" name="search" value="{{ old('search') }}" class="form-control" placeholder="Search">
-                <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </form>
-    </div>  
 
     <div class="container-fluid">
         <table class="table table-striped table-bordered e">
             <thead class="table-dark">
                 <tr align="center">
                     <th>No</th>
-                    <th>Judul</th>
+                    <th>Image</th>
                     <th>Tanggal Upload</th>
                     <th colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($galeri as $row )
                 <tr>
-                    <td align="center" width="50px">1</td>
-                    <td width="400px">Lorem ipsum .</td>
-                    <td width="150px" align="center">20/07/2022</td>
+                    <td align="center" width="50px">{{ ++$i }}</td>
+                    <td width="200px" align="center">
+                        <img src="{{ asset('storage/' . $row->image) }}" class="img-fluid" width="150px" height="150px" alt="">
+                    </td>
+                    <td width="150px" align="center">{{ $row->created_at }}</td>
                     <td width="100px" align="center">
-                        <a name='edit' id='edit' class='btn btn-info' href="#" role='button' data-bs-toggle="modal" data-bs-target="#edit_buku">
+                        <a name='edit' id='edit' class='btn btn-info' href="#" role='button' data-toggle="modal" data-target="#edit_buku">
                             <i class="fas fa-edit"></i>
                         </a>
                         <a role="button" href="#" type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return confirm('Apakah Anda Yakin?')">
@@ -73,9 +69,13 @@
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
+        {!! $galeri->links() !!}
     </div>
+
+    @include('admin.pages.add-galeri')
 @endsection
 
 @section('footer')

@@ -23,7 +23,7 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12 justify-content-center mb-5">
-                        <img src="{{ asset("assets/x2/" . $row->image) }}" class="img-fluid rounded-0" style="height: 20rem; width: 200vh; object-fit: cover;" alt="...">
+                    <img src="{{ asset("storage/" . $row->image) }}" class="img-fluid rounded-0" style="height: 20rem; width: 200vh; object-fit: cover;" alt="...">
                     </div>
                     <div class="col-12">
                         {!! $row->body !!}

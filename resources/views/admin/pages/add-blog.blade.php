@@ -34,15 +34,30 @@
             <div class="form-group">
                 <label for="judul">Judul Berita</label>
                 <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" id="cb" placeholder="Masukkan Judul Berita" value="">
+                @error('judul')
+                    <div class="invalid-feedback">
+                        Judul is required
+                    </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="image" class="form-label">Gambar/Thumbnail</label>
                 <img class="img-preview img-fluid col-sm-2" alt="">
                 <input id="formFile" class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" onchange="previewImage()">
+                @error('image')
+                    <div class="invalid-feedback">
+                        Image must to fill
+                    </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="body">Isi Berita</label>
                 <textarea id="editor" class="form-control @error('body') is-invalid @enderror" type="text" name="body"></textarea>
+                @error('body')
+                    <div class="invalid-feedback">
+                        Body is Required!
+                    </div>
+                @enderror
             </div>
             <div class="float-sm-right mt-4">
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>

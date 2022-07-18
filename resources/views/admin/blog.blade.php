@@ -57,11 +57,11 @@
         <table class="table table-striped table-bordered table-responsive" id="example1">
             <thead class="table-dark">
                 <tr align="center">
-                    <th>No</th>
-                    <th>Judul</th>
-                    <th>Ringkasan</th>
-                    <th>Tanggal Upload</th>
-                    <th colspan="2">Action</th>
+                    <th align="center" width="50px">No</th>
+                    <th width="600px">Judul</th>
+                    <th width="350px" align="center">Ringkasan</th>
+                    <th width="250px" align="center">Tanggal Upload</th>
+                    <th width="250px" align="center" colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,7 +75,7 @@
                             <a name='edit' id='edit' class='btn btn-primary mb-1' href="{{ route('viewEditBerita', $row->id) }}" role='button'>
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a name='edit' id='edit' class='btn btn-info mb-1' role='button' data-toggle="modal" data-target="#detail_berita{{ $row->id }}"">
+                            <a name='edit' id='edit' class='btn btn-info mb-1' role='button' data-toggle="modal" data-target="#detail_berita{{ $row->id }}">
                                 <i class="fas fa-info-circle"></i>
                             </a>
                             <form action="{{ route('deleteBerita', $row->id) }}" method="post" class="d-inline-flex">

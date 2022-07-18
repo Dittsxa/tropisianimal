@@ -55,30 +55,13 @@
 
     <div class="container d-flex">
         <div class="row mt-3 mb-5">
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/mathew-schwartz-OjQgsR1oyEw-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/vladimir-kudinov-vmlJcey6HEU-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/alessandro-desantis-9_9hzZVjV8s-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/david-clode-0lwa8Dprrzs-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/david-clode-AtCChdVhAmA-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/dawn-armfield-84n7c9cLEKM-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/TERUMBU-KARANG (1)@2x.png') }}" height="200px" class="img-fluid">
-            </div>
-            <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
-                <img src="{{ asset('assets/x2/joshua-j-cotten-VCzNXhMoyBw-unsplash@2x.png') }}" height="200px" class="img-fluid">
-            </div>
+            @foreach ($galeri as $row)
+                <div class="col-lg-3 col-6 mt-4 flex-column photo-gallery">
+                    <img src="{{ asset('storage/' . $row->image) }}" height="200px" class="img-fluid">
+                </div>    
+            @endforeach
+            
+            {!! $galeri->links() !!}
         </div>
     </div>
 
